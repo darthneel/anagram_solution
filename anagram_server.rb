@@ -1,13 +1,11 @@
 require "./lib/anagram.rb"
 require "./lib/connection.rb"
-require 'pry'
-require 'sinatra'
 require 'mustache'
+require 'sinatra'
+require 'sinatra/reloader'
 
 def anagram_checker(word_one, word_two)
 	word_one_chopped = word_one.delete(" ").split(//).sort
-	#word_one_chopped = word_one.scan(/\w/).sort
-	#maybe skip regex for class
 	word_two_chopped = word_two.delete(" ").split(//).sort
 	if word_one_chopped == word_two_chopped
 		Anagram.create(word_one: word_one, word_two: word_two)
